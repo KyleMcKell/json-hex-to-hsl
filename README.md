@@ -36,3 +36,7 @@ palettes
   "tertiary": "#27ab83"
 }
 ```
+
+### <strong>Your original files will be rewritten</strong>
+
+Note: You will also need to be sure that your JSON file doesn't have a trailing comma

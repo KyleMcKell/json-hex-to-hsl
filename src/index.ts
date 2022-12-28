@@ -1,9 +1,9 @@
 import type { StringObject } from "./sharedTypes.ts"
 
-import { hexArrToHSL } from "./formatData.ts"
+import { hexArrToHSL, hexArrToRGB } from "./formatColors.ts"
 import { writeCSSFile, writeJSONFile } from "./writeToFile.ts"
 
-const loopAndFormat = async (
+const formatFilesInDir = async (
   dir: AsyncIterable<Deno.DirEntry>,
   dirName: string,
   baseDir = "./palettes"
@@ -23,15 +23,18 @@ const loopAndFormat = async (
     await writeJSONFile(hslArray, name, `${baseDir}/json-hsl`)
     await writeCSSFile(hslArray, name, `${baseDir}/css-hsl`)
 
+    // we have rgb too ayo
+    const rgbArray = hexArrToRGB(hexArray)
+    await writeJSONFile(rgbArray, name, `${baseDir}/json-rgb`)
+    await writeCSSFile(rgbArray, name, `${baseDir}/css-rgb`)
+
     // may as well write the hex variants since we have it
     await writeCSSFile(hexArray, name, `${baseDir}/css-hex`)
-    if (fileNoComments.length !== file.length) {
-      await writeJSONFile(hexArray, name, dirName)
-    }
+    await writeJSONFile(hexArray, name, `${baseDir}/${dirName}`)
   }
 }
 
 const baseDir = "./palettes"
 const dirName = "json-hex"
 const dir = Deno.readDir(`${baseDir}/${dirName}`)
-await loopAndFormat(dir, dirName, baseDir)
+await formatFilesInDir(dir, dirName, baseDir)
