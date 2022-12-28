@@ -8,8 +8,8 @@ const distDir = "./dist"
 const dir = Deno.readDir(`${baseDir}`)
 
 for await (const dirEntry of dir) {
-  const { name } = dirEntry
-  const file = await Deno.readTextFile(`${baseDir}/${name}`).catch(() => null)
+  const { name: fileName } = dirEntry
+  const file = await Deno.readTextFile(`${baseDir}/${fileName}`).catch()
   if (!file) break
   const fileNoComments = file
     .split("\n")
@@ -20,15 +20,15 @@ for await (const dirEntry of dir) {
   const hexArray = Object.entries(json)
 
   const hslArray = hexArrToHSL(hexArray)
-  await writeJSONFile(hslArray, name, `${distDir}/json-hsl`)
-  await writeCSSFile(hslArray, name, `${distDir}/css-hsl`)
+  await writeJSONFile(hslArray, fileName, `${distDir}/json-hsl`)
+  await writeCSSFile(hslArray, fileName, `${distDir}/css-hsl`)
 
   // we have rgb too ayo
   const rgbArray = hexArrToRGB(hexArray)
-  await writeJSONFile(rgbArray, name, `${distDir}/json-rgb`)
-  await writeCSSFile(rgbArray, name, `${distDir}/css-rgb`)
+  await writeJSONFile(rgbArray, fileName, `${distDir}/json-rgb`)
+  await writeCSSFile(rgbArray, fileName, `${distDir}/css-rgb`)
 
   // may as well write the hex variants since we have it
-  await writeCSSFile(hexArray, name, `${distDir}/css-hex`)
-  await writeJSONFile(hexArray, name, `${distDir}/json-hex`)
+  await writeCSSFile(hexArray, fileName, `${distDir}/css-hex`)
+  await writeJSONFile(hexArray, fileName, `${distDir}/json-hex`)
 }
