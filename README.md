@@ -1,8 +1,9 @@
 # JSON Hex to HSL
 
-This simple Deno Script takes a dir with JSON files (`json-hex`) that have hex values, and spits out 5 new dirs:
+This simple Deno Script takes a dir with JSON files (`palette`) that have hex values, and spits out 5 new dirs:
 
 - `css-hex`
+- `json-hex`
 - `css-hsl`
 - `json-hsl`
 - `css-rgb`

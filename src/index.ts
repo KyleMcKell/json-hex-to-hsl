@@ -5,12 +5,12 @@ import { writeCSSFile, writeJSONFile } from "./writeToFile.ts"
 
 const formatFilesInDir = async (
   dir: AsyncIterable<Deno.DirEntry>,
-  dirName: string,
   baseDir = "./palettes"
 ) => {
   for await (const dirEntry of dir) {
     const { name } = dirEntry
-    const file = await Deno.readTextFile(`${baseDir}/${dirName}/${name}`)
+    const file = await Deno.readTextFile(`${baseDir}/${name}`).catch(() => null)
+    if (!file) break
     const fileNoComments = file
       .split("\n")
       .filter((line) => !line.includes("//"))
@@ -30,11 +30,10 @@ const formatFilesInDir = async (
 
     // may as well write the hex variants since we have it
     await writeCSSFile(hexArray, name, `${baseDir}/css-hex`)
-    await writeJSONFile(hexArray, name, `${baseDir}/${dirName}`)
+    await writeJSONFile(hexArray, name, `${baseDir}/json-hex`)
   }
 }
 
 const baseDir = "./palettes"
-const dirName = "json-hex"
-const dir = Deno.readDir(`${baseDir}/${dirName}`)
-await formatFilesInDir(dir, dirName, baseDir)
+const dir = Deno.readDir(`${baseDir}`)
+await formatFilesInDir(dir, baseDir)
