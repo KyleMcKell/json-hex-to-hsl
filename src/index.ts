@@ -5,11 +5,12 @@ import { writeCSSFile, writeJSONFile } from "./writeToFile.ts"
 
 const loopAndFormat = async (
   dir: AsyncIterable<Deno.DirEntry>,
-  dirName: string
+  dirName: string,
+  baseDir = "./palettes"
 ) => {
   for await (const dirEntry of dir) {
     const { name } = dirEntry
-    const file = await Deno.readTextFile(`${dirName}/${name}`)
+    const file = await Deno.readTextFile(`${baseDir}/${dirName}/${name}`)
     const fileNoComments = file
       .split("\n")
       .filter((line) => !line.includes("//"))
@@ -19,17 +20,18 @@ const loopAndFormat = async (
     const hexArray = Object.entries(json)
 
     const hslArray = hexArrToHSL(hexArray)
-    await writeJSONFile(hslArray, name, "./json-hsl")
-    await writeCSSFile(hslArray, name, "./css-hsl")
+    await writeJSONFile(hslArray, name, `${baseDir}/json-hsl`)
+    await writeCSSFile(hslArray, name, `${baseDir}/css-hsl`)
 
     // may as well write the hex variants since we have it
-    await writeCSSFile(hexArray, name, "./css-hex")
+    await writeCSSFile(hexArray, name, `${baseDir}/css-hex`)
     if (fileNoComments.length !== file.length) {
       await writeJSONFile(hexArray, name, dirName)
     }
   }
 }
 
-const dirName = "./json-hex"
-const dir = Deno.readDir(dirName)
-await loopAndFormat(dir, dirName)
+const baseDir = "./palettes"
+const dirName = "json-hex"
+const dir = Deno.readDir(`${baseDir}/${dirName}`)
+await loopAndFormat(dir, dirName, baseDir)
