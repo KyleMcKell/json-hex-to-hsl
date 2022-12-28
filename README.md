@@ -1,10 +1,12 @@
 # JSON Hex to HSL
 
-This simple Deno Script takes a dir with JSON files (`json-hex`) that have hex values, and spits out 3 new dirs:
+This simple Deno Script takes a dir with JSON files (`json-hex`) that have hex values, and spits out 5 new dirs:
 
 - `css-hex`
 - `css-hsl`
 - `json-hsl`
+- `css-rgb`
+- `json-rgb`
 
 This was specifically made to change the [Refactoring UI](https://www.refactoringui.com/) color palettes into a more usable format. I got tired of having to translate the hex values into something better. Making it into css files and json files was a nice medium.
 
