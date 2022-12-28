@@ -1,0 +1,9 @@
+html {
+--trueblack: hsl(0 0% 0% / 1);
+--truewhite: hsl(0 0% 100% / 1);
+--white: hsl(220 60% 99% / 1);
+--black: hsl(125 85.8% 44.1% / 1);
+--primary: hsl(199 84.3% 54.9% / 1);
+--secondary: hsl(328 84.7% 46.3% / 1);
+--tertiary: hsl(162 62.9% 41.2% / 1);
+}
