@@ -14,13 +14,19 @@ const loopAndFormat = async (
       .split("\n")
       .filter((line) => !line.includes("//"))
       .join("\n")
+
     const json: StringObject = JSON.parse(fileNoComments)
     const hexArray = Object.entries(json)
-    writeJSONFile(hexArray, name, dirName)
-    writeCSSFile(hexArray, name, "./css-hex")
+
     const hslArray = hexArrToHSL(hexArray)
-    writeJSONFile(hslArray, name, "./json-hsl")
-    writeCSSFile(hslArray, name, "./css-hsl")
+    await writeJSONFile(hslArray, name, "./json-hsl")
+    await writeCSSFile(hslArray, name, "./css-hsl")
+
+    // may as well write the hex variants since we have it
+    await writeCSSFile(hexArray, name, "./css-hex")
+    if (fileNoComments.length !== file.length) {
+      await writeJSONFile(hexArray, name, dirName)
+    }
   }
 }
 
