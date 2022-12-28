@@ -24,7 +24,7 @@ palettes
 --  example-palette.json
 ```
 
-```json
+```jsonc
 // example-palette.json
 {
   "trueblack": "#000",
