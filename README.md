@@ -9,3 +9,10 @@ This simple Deno Script takes a dir with JSON files (`json-hex`) that have hex v
 This was specifically made to change the [Refactoring UI](https://www.refactoringui.com/) color palettes into a more usable format. I got tired of having to translate the hex values into something better. Making it into css files and json files was a nice medium.
 
 If you'd like to, you can also transform your own palettes into these different formats. Edit the palette (or make many) that are inside of `json-hex` and you'll get some cool new HSL palettes!
+
+# How to Run
+
+Have a dir located here `palettes/json-hex` and also a file within it
+
+Run Command:
+`deno run --allow-all src/index.ts`
