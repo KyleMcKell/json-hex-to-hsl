@@ -1,9 +1,9 @@
 html {
---trueblack: #000;
---truewhite: #fff;
---white: #fbfcfe;
---black: #10d121;
---primary: #2bb0ed;
---secondary: #da127d;
---tertiary: #27ab83;
+  --trueblack: #000;
+  --truewhite: #fff;
+  --white: #fbfcfe;
+  --black: #10d121;
+  --primary: #2bb0ed;
+  --secondary: #da127d;
+  --tertiary: #27ab83;
 }
