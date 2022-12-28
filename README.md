@@ -40,6 +40,4 @@ palettes
 }
 ```
 
-### <strong>Your original files will be rewritten</strong>
-
-Note: You will also need to be sure that your JSON file doesn't have a trailing comma
+Note: You will also need to be sure that your JSON files don't have a trailing comma
