@@ -76,7 +76,7 @@ export const hexToHSL = (hexString: string) => {
 
   return {
     hsl: hslString,
-    hslo: hslOpacity,
+    hsla: hslOpacity,
     hue,
     saturation,
     lightness,
