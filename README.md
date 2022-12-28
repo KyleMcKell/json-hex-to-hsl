@@ -1,13 +1,13 @@
 # JSON Hex to HSL
 
-This simple Deno Script takes a dir with JSON files (`palette`) that have hex values, and spits out 5 new dirs:
+This simple Deno Script takes a dir with JSON files (`palettes`) that have hex values, and spits out 6 new dirs:
 
-- `css-hex`
-- `json-hex`
-- `css-hsl`
-- `json-hsl`
-- `css-rgb`
-- `json-rgb`
+- `dist/css-hex`
+- `dist/json-hex`
+- `dist/css-hsl`
+- `dist/json-hsl`
+- `dist/css-rgb`
+- `dist/json-rgb`
 
 This was specifically made to change the [Refactoring UI](https://www.refactoringui.com/) color palettes into a more usable format. I got tired of having to translate the hex values into something better. Making it into css files and json files was a nice medium.
 
@@ -17,14 +17,13 @@ If you'd like to, you can also transform your own palettes into these different 
 
 `deno run --allow-all src/index.ts`
 
-Have a dir located here `palettes/json-hex` and also a file within it
+In the `palettes` include json files which have Hex values for each key
 
 Currently the contents of this look as follows:
 
 ```
 palettes
-| json-hex
-|| example-palette.json
+| example-palette.json
 ```
 
 ```jsonc
