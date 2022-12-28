@@ -20,8 +20,8 @@ Currently the contents of this look as follows:
 
 ```
 palettes
-- json-hex
---  example-palette.json
+| json-hex
+|| example-palette.json
 ```
 
 ```jsonc
