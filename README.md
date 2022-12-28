@@ -12,7 +12,27 @@ If you'd like to, you can also transform your own palettes into these different 
 
 # How to Run
 
+`deno run --allow-all src/index.ts`
+
 Have a dir located here `palettes/json-hex` and also a file within it
 
-Run Command:
-`deno run --allow-all src/index.ts`
+Currently the contents of this look as follows:
+
+```
+palettes
+- json-hex
+--  example-palette.json
+```
+
+```json
+// example-palette.json
+{
+  "trueblack": "#000",
+  "truewhite": "#fff",
+  "white": "#fbfcfe",
+  "black": "#10d121",
+  "primary": "#2bb0ed",
+  "secondary": "#da127d",
+  "tertiary": "#27ab83"
+}
+```
