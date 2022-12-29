@@ -1,6 +1,6 @@
 import type { StringObject } from "./sharedTypes.ts"
 
-import { writeToFiles } from "./writeToFile.ts"
+import { writeToFiles } from "./writeToFiles.ts"
 
 const baseDir = "./palettes"
 const distDir = "./dist"
@@ -18,7 +18,5 @@ for await (const dirEntry of dir) {
   const json: StringObject = JSON.parse(fileNoComments)
   const hexArray = Object.entries(json)
 
-  await writeToFiles({ colorType: "rgb", hexArray, fileName, dirName: distDir })
-  await writeToFiles({ colorType: "hex", hexArray, fileName, dirName: distDir })
-  await writeToFiles({ colorType: "hsl", hexArray, fileName, dirName: distDir })
+  writeToFiles({ dirName: distDir, fileName, hexArray })
 }
