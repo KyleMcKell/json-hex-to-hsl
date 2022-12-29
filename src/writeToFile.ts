@@ -1,5 +1,6 @@
-import { hexArrToHSL, hexArrToRGB } from "./formatColors.ts"
 import type { StringObject } from "./sharedTypes.ts"
+
+import { hexArrToHSL, hexArrToRGB } from "./formatColors.ts"
 
 type WriteToFilesProps = {
   colorType: "rgb" | "hex" | "hsl"
