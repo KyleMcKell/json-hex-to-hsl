@@ -1,6 +1,6 @@
 import type { StringObject } from "./sharedTypes.ts"
 
-import { writeToFiles } from "./writeToFiles.ts"
+import { writeToFiles } from "./writeFiles.ts"
 
 const baseDir = "./palettes"
 const distDir = "./dist"
